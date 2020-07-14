@@ -1,0 +1,107 @@
+<div class="row">
+  <div class="col-8">
+    <div class="pb-4">
+      <mat-card>
+        <mat-card-content>
+          <div class="row p-2">
+            <div class="col-xl-4 ">
+              <div class="input-group">
+                <input name="searchText" #searchText placeholder="Enter Text..." class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-4 ">
+              <div class="input-group">
+                <input name="searchSubText" #searchSubText placeholder="Enter Sub Text..." class="form-control" />
+              </div>
+            </div>
+            <div class="col-xl-4">
+              <div class="float-right">
+                <button type="button" class="btn btn-secondary mr-2" (click)="reset()">Reset</button>
+                <button class="btn btn-primary search"
+                  (click)="search(searchText.value,searchSubText.value)">Search</button>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div *ngIf="error" class="pb-4 p-0">
+      <mat-card style="background-color: steelblue;">
+        <div class="row p-2 m-0 text-white">
+          <p>{{errorMessage}}</p>
+        </div>
+      </mat-card>
+    </div>
+    <div *ngIf="success">
+      <mat-card>
+        <div class="row p-4">
+          <div class="table-responsive table-listing" *ngIf="!!searchResults && !!searchResults.length">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="btn-secondary">Occurence No</th>
+                  <th class="btn-secondary">Occurence Index</th>
+                  <th class="btn-secondary">Text </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let search of searchResults">
+
+                  <td>{{ search.occurence  }}</td>
+                  <td>{{ search.searchIndex   }}</td>
+                  <td> {{searchText.value}} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+
+  <div class="col-4">
+    <div class="row">
+      <div class="col-12 pb-4">
+        <mat-card>
+          <div class="d-flex justify-content-between mb-2">
+            <h4> Candidate Information</h4>
+          </div>
+          <ul class="pl-2">
+            <li class="d-flex justify-content-between ">
+              <p>
+                <strong> Name</strong><br />
+                Sathish Kumar Jayaprakash
+              </p>
+            </li>
+            <li class="d-flex justify-content-between ">
+              <p>
+                <strong>Phone</strong><br />
+                0478668849
+              </p>
+            </li>
+            <li class="d-flex justify-content-between ">
+              <p>
+                <strong>Email</strong><br />
+                Sathishj2008@gmail.com
+              </p>
+            </li>
+            <li class="d-flex justify-content-between ">
+              <p>
+                <strong>Location</strong><br />
+                Midland, Perth
+              </p>
+            </li>
+            <li class="d-flex justify-content-between ">
+              <p>
+                <strong>Profile</strong><br />
+                <a href="https://easyupload.io/x6a168" target="_blank">View Profile</a>
+              </p>
+            </li>
+          </ul>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+</div>
